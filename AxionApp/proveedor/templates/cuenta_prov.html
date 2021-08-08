@@ -1,0 +1,117 @@
+<!-- cargando plantilla -->
+{% extends "plantilla.html" %}
+
+<!--cargando carpeta statica-->
+{% load static %}
+
+
+<!-- abriendo contenido variable -->
+{% block content %}
+
+<!-- Datatables -->
+<script type="text/javascript" src="{% static 'js/Datatable.js' %}"></script>
+
+<div class="contenedor">
+    <div class="contenedor">
+        <b style="color: blue;font-size: xx-large"> {{ proveedor.id }}- &nbsp</b>
+        <b style="color: blue;font-size: xx-large"> {{ proveedor.nombre }}</b>
+    </div>
+
+</div>
+
+<!-- tabla y botones laterales-->
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-10">
+            <div class="table-responsive" id="mydatatable-container">
+                <table class="records_list table table-sm table-striped table-hover" id="mydatatable">
+                    <thead>
+                    <tr class="text-center">
+                        <th scope="col">Id</th>
+                        <th scope="col">Proveedor</th>
+                        <th scope="col">Banco</th>
+                        <th scope="col">N° de Cheque</th>
+                        <th scope="col">Fecha de Carga</th>
+                        <th scope="col">Vencimiento</th>
+                        <th scope="col">Monto</th>
+                        <th scope="col">Pagado</th>
+                        <th scope="col">Situacion</th>
+                        <th scope="col"></th>
+                        <th scope="col"></th>
+                        <th scope="col"></th>
+                    </tr>
+                    </thead>
+                    <tfoot>
+                    <tr>
+                        <th>Filter..</th>
+                        <th>Filter..</th>
+                        <th>Filter..</th>
+                        <th>Filter..</th>
+                        <th>Filter..</th>
+                        <th>Filter..</th>
+                        <th>Filter..</th>
+                        <th>Filter..</th>
+                        <th>Filter..</th>
+                        <th>Filter..</th>
+                        <th>Filter..</th>
+                        <th>Filter..</th>
+                    </tr>
+                    </tfoot>
+                    <tbody id="myTable">
+                    <tr>
+                        {% for cheques in cheques_all %}
+                        <th scope="row" class="text-center">{{cheques.id}}</th>
+                        <td class="text-center"> {{cheques.proveedor}}</td>
+                        <td class="text-center"> {{cheques.banco}}</td>
+                        <td class="text-center"> {{cheques.numCh}}</td>
+                        <td class="text-center">{{cheques.fechaCarga|date:"d/m/Y"}}</td>
+                        <td class="text-center"> {{cheques.fechaVto|date:"d/m/Y"}}</td>
+                        <td class="text-center"> {{cheques.monto}}</td>
+                        <td class="text-center">
+                            {% if cheques.pagado == False %}
+                            <i class="fas fa-times-circle" style="color: red;"></i>
+                            {% else %}
+                            <i class="fas fa-check-square" style="color: green;"></i>
+                            {% endif %}
+                        </td>
+                        <td class="text-center">
+                            {% if vencimiento < cheques.fechaVto %}
+                            <p>No vencido</p>
+                            {% else %}
+                            <p>Vencido</p>
+                            {% endif %}
+                        </td>
+                        <td class="text-center"><a href="{% url 'detalleCheque' cheques.id %}"><i
+                                class="fas fa-eye"></i></a>
+                        </td>
+                        <td class="text-center"><a href="{% url 'editarCheque' cheques.id %}"><i
+                                class="fas fa-pencil-alt"/></a></td>
+                        <td class="text-center">
+                            <a href="{% url 'eliminarCheque' cheques.id %}"><i
+                                    class="fas fa-trash-alt"/></a></td>
+                    </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <!--        tarjetas        -->
+        <div class="col-2">
+            </br></br></br></br>
+            <div class="card text-white bg-danger mb-3">
+                <div class="card-header text-center"><b>TOTAL NO PAGADO</b></div>
+                <div class="card-body">
+                    <h5 class="card-title text-center"><b>${{total}}</b></h5>
+                </div>
+            </div>
+            <div class="card text-white bg-danger mb-3">
+                <div class="card-header text-center"><b>CANTIDAD DE CHEQUES</b></div>
+                <div class="card-body">
+                    <h5 class="card-title text-center"><b>{{no_cheques}}</b></h5>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

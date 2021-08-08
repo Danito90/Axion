@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <!--cargando carpeta statica-->
+    {% load static %}
+
+    <!--  Css  -->
+    <link type="text/css" href="{% static 'css/login.css' %} " rel="stylesheet"/>
+    <!--  js -->
+    <script type="text/javascript" src="{% static 'js/login.js' %}"></script>
+
+</head>
+<body>
+<div class="login-page">
+    <div class="form">
+        <!--        <form class="register-form">-->
+        <!--            <input type="text" placeholder="name"/>-->
+        <!--            <input type="password" placeholder="password"/>-->
+        <!--            <input type="text" placeholder="email address"/>-->
+        <!--            <button>create</button>-->
+        <!--            <p class="message">Posee un usuario? <a href="#">Sign In</a></p>-->
+        <!--        </form>-->
+        <form method="POST" class="login-form">
+            {% csrf_token %}
+            <input type="text" placeholder="usuario" name="username"/>
+            <input type="password" placeholder="contraseña" name="password"/>
+            <button type="submit"> LOGIN</button>
+            <p class="message">No tiene usuario? <a href="#"> Registrarse</a></p>
+
+        </form>
+    </div>
+</div>
+
+</div>
+</br>
+
+</body>
+</html>

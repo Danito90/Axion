@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Gestion de Cheques</title>
+    <!--cargando carpeta statica-->
+    {% load static %}
+
+    <!--  FontAwesome  -->
+    <script src="https://kit.fontawesome.com/23e246eaed.js" crossorigin="anonymous"></script>
+
+    <!-- Required meta tags -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.0/css/bootstrap.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.0/js/bootstrap.min.js"></script>
+
+    <!-- Datatables -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/v/bs4-4.1.1/dt-1.10.18/datatables.min.css">
+    <!--    <script type="text/javascript" src="{% static 'js/Datatable.js' %}"></script>  se debe pegar en cada html-->
+
+    <!-- Buttons -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.6.2/css/buttons.dataTables.min.css">
+    <script src="https://cdn.datatables.net/buttons/1.6.2/js/dataTables.buttons.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.6.2/js/buttons.html5.min.js"></script>
+    <script src="https://cdn.rawgit.com/bpampuch/pdfmake/0.1.53/build/pdfmake.min.js"></script>
+    <script src="https://cdn.rawgit.com/bpampuch/pdfmake/0.1.53/build/vfs_fonts.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.6.2/js/buttons.flash.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.6.2/js/buttons.print.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+
+    <!--    Css y js de la tabla-->
+    <link type="text/css" href="{% static 'css/tabla.css' %} " rel="stylesheet"/>
+    <script type="text/javascript" src="{% static 'js/tabla.js' %} "></script>
+
+    <!--  Css  -->
+    <link type="text/css" href="{% static 'css/centrado.css' %} " rel="stylesheet"/>
+
+    <!--  para datepicker  -->
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="/resources/demos/style.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+    <!--  Datepicker  -->
+    <script type="text/javascript" src="{% static 'js/datepicker.js' %}"></script>
+
+</head>
+<body>
+<!-- Encabezado y barra menu-->
+<div class="container-xxl">
+    <div class="row justify-content-center bg-success bg-gradient">
+        <div class="col-10 centrado">
+            <h1><b>GESTION SOBRE EMISION DE CHEQUES</b></h1>
+        </div>
+        <div class="col-2 centrado" style="padding:0.8%;">
+            <a href="{% url 'logout' %}"><i  class="fas fa-user fa-2x" style="color: black;">&nbsp;{{ user.username }}</i></a>
+        </div>
+        <div class="row col-12 bg-success bg-gradient text-dark">
+
+            <div class="row col-12">
+                <a href="{% url 'index' %}" class="btn btn-success"><b>INICIO</b></a>
+                <a href="{% url 'agregarProveedor' %}" class="btn btn-success"><b>AGREGAR PROVEEDOR</b></a>
+                <a href="{% url 'agregarCheque' %}" class="btn btn-success"><b>AGREGAR CHEQUE</b></a>
+            </div>
+        </div>
+    </div>
+
+    </br>
+
+    {% block content %}
+
+    {% endblock %}
+
+</div>
+</br>
+
+<!--<div class="container my-5">-->
+
+<footer class="bg-success text-center text-white">
+    <!-- Grid container -->
+    <div class="container p-4 pb-0">
+        <!-- Section: Social media -->
+        <section class="mb-4">
+            <!-- Facebook -->
+            <a class="btn btn-outline-light btn-floating m-1" href="https://www.facebook.com/danielito.tor/"
+               role="button"
+            ><i class="fab fa-facebook-f"></i
+            ></a>
+
+            <!-- Twitter -->
+            <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
+            ><i class="fab fa-twitter"></i
+            ></a>
+
+            <!-- Google -->
+            <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
+            ><i class="fab fa-google"></i
+            ></a>
+
+            <!-- Instagram -->
+            <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
+            ><i class="fab fa-instagram"></i
+            ></a>
+
+            <!-- Linkedin -->
+            <a class="btn btn-outline-light btn-floating m-1"
+               href="https://www.linkedin.com/in/daniel-torres-0b2023214/" role="button"
+            ><i class="fab fa-linkedin-in"></i
+            ></a>
+
+            <!-- Github -->
+            <a class="btn btn-outline-light btn-floating m-1" href="https://github.com/Danito90/" role="button"
+            ><i class="fab fa-github"></i
+            ></a>
+        </section>
+        <!-- Section: Social media -->
+    </div>
+    <!-- Grid container -->
+
+    <!-- Copyright -->
+    <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+        © 2020 Copyright:
+        <a class="text-white" href="">Daniel Torres</a>
+    </div>
+    <!-- Copyright -->
+</footer>
+
+<!--</div>-->
+<!-- End of .container -->
+
+
+<script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
+
+
+</body>
+</html>
+
+
+</br>
+
+</body>
+</html>

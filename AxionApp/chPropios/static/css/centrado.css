@@ -1,0 +1,27 @@
+.centrado {
+    text-align: center !important;
+    vertical-align: middle !important;
+}
+
+.izquierda {
+    text-align: left !important;
+    vertical-align: middle !important;
+}
+
+.derecha {
+    text-align: right !important;
+    vertical-align: middle !important;
+}
+
+.contenedor {
+margin: 10px auto;
+width: 60%;
+display: flex;
+align-items: center;
+justify-content: center;
+}
+
+.contenedor2 {
+background-color: #E7F6F6;
+border: 1px solid #99cccc;
+}

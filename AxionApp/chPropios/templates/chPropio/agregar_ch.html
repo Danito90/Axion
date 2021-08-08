@@ -1,0 +1,44 @@
+<!-- cargando plantilla -->
+{% extends "plantilla.html" %}
+
+<!--cargando carpeta statica-->
+{% load static %}
+
+<!-- abriendo contenido variable -->
+{% block content %}
+
+{% if "valido" in request.GET %}
+<div class="contenedor">
+    <i class="fas fa-thumbs-up" style="color: blue;font-size: xx-large">&nbsp<i class="fas fa-thumbs-up"
+                                                                                 style="color: blue;font-size: xx-large"><b
+            class="bg-succes" style="color: blue;font-size: large"> &nbsp &nbsp EL CHEQUE HA SIDO CARGADO
+        CORRECTAMENTE </b></i></i>
+</div>
+{% endif %}
+
+<div class="contenedor">
+    <div class="card text-white bg-success anger mb-3" style="width: 26rem;">
+        <div class="card-header text-center"><b><h1>Agregar Cheque</h1></b></div>
+        <div class="card-body">
+            <form method="POST">
+                <table>
+                    {{FormCh}}
+                </table>
+                <br>
+                <div class="container overflow-hidden">
+                    <div class="row gx-5">
+                        <div class="col">
+                            <a href="{% url 'index' %}" class="btn btn-danger" style="width:150px"><b> REGRESAR </b></a>
+                        </div>
+                        <div class="col">
+                            <button type="submit" class="btn btn-dark" style="width:150px;"><b> ENVIAR </b></button>
+                        </div>
+                    </div>
+                </div>
+                {% csrf_token %}
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
