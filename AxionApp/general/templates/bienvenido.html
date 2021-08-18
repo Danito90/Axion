@@ -4,88 +4,99 @@
 <!--cargando carpeta statica-->
 {% load static %}
 
-
 <!-- abriendo contenido variable -->
 {% block content %}
-
-<!-- Datatables -->
-<script type="text/javascript" src="{% static 'js/Datatable.js' %}"></script>
 
 <!-- tabla y botones laterales-->
 <div class="container-fluid">
     <div class="row">
         <div class="col-10">
-            <div class="table-responsive" id="mydatatable-container">
-                <table class="records_list table table-sm table-striped table-hover" id="mydatatable">
-                    <thead>
-                    <tr class="text-center">
-                        <th scope="col" style="vertical-align: middle;">Id</th>
-                        <th scope="col" style="vertical-align: middle;">Proveedor</th>
-                        <th scope="col" style="vertical-align: middle;">Banco</th>
-                        <th scope="col" style="vertical-align: middle;">N° de Cheque</th>
-                        <th scope="col" style="vertical-align: middle;">Fecha de Carga</th>
-                        <th scope="col" style="vertical-align: middle;">Vencimiento</th>
-                        <th scope="col" style="vertical-align: middle;">Monto</th>
-                        <th scope="col" style="vertical-align: middle;">Pagado</th>
-                        <th scope="col" style="vertical-align: middle;">Situacion</th>
-                        <th scope="col"></th>
-                        <th scope="col"></th>
-                        <th scope="col"></th>
-                    </tr>
-                    </thead>
-                    <tfoot>
-                    <tr>
-                        <th>Filter..</th>
-                        <th>Filter..</th>
-                        <th>Filter..</th>
-                        <th>Filter..</th>
-                        <th>Filter..</th>
-                        <th>Filter..</th>
-                        <th>Filter..</th>
-                        <th>Filter..</th>
-                        <th>Filter..</th>
-                        <th>Filter..</th>
-                        <th>Filter..</th>
-                        <th>Filter..</th>
-                    </tr>
-                    </tfoot>
-                    <tbody id="myTable">
-                    <tr>
-                        {% for cheques in cheques_all %}
-                        <th scope="row" class="text-center">{{cheques.id}}</th>
-                        <td class="text-center"> <a href="cuenta_prov/{{cheques.proveedor_id}}">{{cheques.proveedor}}</a></td>
-                        <td class="text-center"> {{cheques.banco}}</td>
-                        <td class="text-center"> {{cheques.numCh}}</td>
-                        <td class="text-center">{{cheques.fechaCarga|date:"d/m/Y"}}</td>
-                        <td class="text-center"> {{cheques.fechaVto|date:"d/m/Y"}}</td>
-                        <td class="text-center"> {{cheques.monto}}</td>
-                        <td class="text-center">
-                            {% if cheques.pagado == False %}
-                            <i class="fas fa-times-circle" style="color: red;"></i>
-                            {% else %}
-                            <i class="fas fa-check-square" style="color: green;"></i>
-                            {% endif %}
-                        </td>
-                        <td class="text-center">
-                            {% if vencimiento < cheques.fechaVto %}
-                            <p>No vencido</p>
-                            {% else %}
-                            <p>Vencido</p>
-                            {% endif %}
-                        </td>
-                        <td class="text-center"><a href="{% url 'detalleCheque' cheques.id %}"><i class="fas fa-eye"></i></a>
-                        </td>
-                        <td class="text-center"><a href="{% url 'editarCheque' cheques.id %}"><i
-                                class="fas fa-pencil-alt"/></a></td>
-                        <td class="text-center">
-                            <a href="{% url 'eliminarCheque' cheques.id %}"><i
+
+            <div class="card text-black bg-muted mb-3">
+                <div class="card-header text-center"> <b style="color: blue;font-size: xx-large"> CHEQUES EMITIDOS </b></div>
+                <div class="card-body">
+                    <div class="table-responsive" id="mydatatable-container">
+                        <table class="records_list table table-sm table-striped table-hover" id="mydatatable">
+                            <thead>
+                                <tr class="text-center">
+                                    <th scope="col" style="vertical-align: middle;">Id</th>
+                                    <th scope="col" style="vertical-align: middle;">Proveedor</th>
+                                    <th scope="col" style="vertical-align: middle;">Banco</th>
+                                    <th scope="col" style="vertical-align: middle;">N° de Cheque</th>
+                                    <th scope="col" style="vertical-align: middle;">Fecha de Carga</th>
+                                    <th scope="col" style="vertical-align: middle;">Vencimiento</th>
+                                    <th scope="col" style="vertical-align: middle;">Monto</th>
+                                    <th scope="col" style="vertical-align: middle;">Pagado</th>
+                                    <th scope="col" style="vertical-align: middle;">Situacion</th>
+                                    <th scope="col"></th>
+                                    <th scope="col"></th>
+                                    <th scope="col"></th>
+                                </tr>
+                            </thead>
+                            <tfoot>
+                                <tr>
+                                    <th>Filter..</th>
+                                    <th>Filter..</th>
+                                    <th>Filter..</th>
+                                    <th>Filter..</th>
+                                    <th>Filter..</th>
+                                    <th>Filter..</th>
+                                    <th>Filter..</th>
+                                    <th>Filter..</th>
+                                    <th>Filter..</th>
+                                    <th>Filter..</th>
+                                    <th>Filter..</th>
+                                    <th>Filter..</th>
+                                </tr>
+                            </tfoot>
+                            <tbody id="myTable">
+                                <tr>
+                                    {% for cheques in cheques_all %}
+                                    <th scope="row" class="text-center">{{cheques.id}}</th>
+                                    <td class="text-center"> <a
+                                            href="cuenta_prov/{{cheques.proveedor_id}}">{{cheques.proveedor}}</a></td>
+                                    <td class="text-center"> {{cheques.banco}}</td>
+                                    <td class="text-center"> {{cheques.numCh}}</td>
+                                    <td class="text-center">{{cheques.fechaCarga|date:"d/m/Y"}}</td>
+                                    <td class="text-center"> {{cheques.fechaVto|date:"d/m/Y"}}</td>
+                                    <td class="text-center"> {{cheques.monto}}</td>
+                                    <td class="text-center">
+                                        {% if cheques.pagado == False %}
+                                        <div style="color: white;font-size: 1px;">NO</div>
+                                        <i class="fas fa-times-circle" style="color: red;"></i>
+                                        {% else %}
+                                        <div style="color: white;font-size: 1px;">SI</div>
+                                        <i class="fas fa-check-square" style="color: green;"></i>
+                                        {% endif %}
+                                    </td>
+                                    <td class="text-center">
+                                        {% if vencimiento < cheques.fechaVto %} 
+                                        <p>No exigible</p>
+                                        {% else %}
+                                            <p>En fecha!</p>
+                                            {% endif %}
+                                    </td>
+                                    <td class="text-center"><a href="{% url 'detalleCheque' cheques.id %}"><i
+                                                class="fas fa-eye"></i></a>
+                                    </td>
+                                    <td class="text-center"><a href="{% url 'editarCheque' cheques.id %}"><i
+                                                class="fas fa-pencil-alt" /></a></td>
+                                    <td class="text-center">
+                                          <a href="{% url 'eliminarCheque' cheques.id %}"><i
                                     class="fas fa-trash-alt"/></a></td>
-                    </tr>
-                    {% endfor %}
-                    </tbody>
-                </table>
+                                    </td>
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                </div>
             </div>
-        </div>
+
+            
+
         <!--        tarjetas        -->
         <div class="col-2">
             </br></br></br></br>
@@ -105,4 +116,23 @@
     </div>
 </div>
 
+{% endblock %}
+{% block scripts %}
+<!-- Datatables -->
+<link rel="stylesheet" href="https://cdn.datatables.net/v/bs4-4.1.1/dt-1.10.18/datatables.min.css">
+<script src="https://cdn.datatables.net/v/bs4-4.1.1/dt-1.10.18/datatables.min.js"></script>
+
+<!-- Buttons -->
+<link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.6.2/css/buttons.dataTables.min.css">
+<script src="https://cdn.datatables.net/buttons/1.6.2/js/dataTables.buttons.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.6.2/js/buttons.html5.min.js"></script>
+<script src="https://cdn.rawgit.com/bpampuch/pdfmake/0.1.53/build/pdfmake.min.js"></script>
+<script src="https://cdn.rawgit.com/bpampuch/pdfmake/0.1.53/build/vfs_fonts.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.6.2/js/buttons.flash.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.6.2/js/buttons.print.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+
+<!--    Css y js de la tabla-->
+<link type="text/css" href="{% static 'css/tabla.css' %} " rel="stylesheet" />
+<script type="text/javascript" src="{% static 'js/tabla.js' %} "></script>
 {% endblock %}

@@ -11,7 +11,7 @@
                     "url": "https://cdn.datatables.net/plug-ins/1.10.19/i18n/Spanish.json"
                 },
                 "order": [
-                    [6, "asc"], [5, "desc"]
+                    [6, "asc"], [5, "asc"]
                 ],
                 "initComplete": function () {
                     this.api().columns().every(function () {
