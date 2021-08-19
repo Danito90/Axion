@@ -10,8 +10,7 @@
 <!-- tabla y botones laterales-->
 <div class="container-fluid">
     <div class="row">
-        <div class="col-10">
-
+        <div class="col-lg-10 pt-5 pt-lg-0 order-2 order-lg-1">
             <div class="card text-black bg-muted mb-3">
                 <div class="card-header text-center"> <b style="color: blue;font-size: xx-large"> CHEQUES EMITIDOS </b></div>
                 <div class="card-body">
@@ -73,8 +72,8 @@
                                         {% if vencimiento < cheques.fechaVto %} 
                                         <p>No exigible</p>
                                         {% else %}
-                                            <p>En fecha!</p>
-                                            {% endif %}
+                                        <p>En fecha!</p>
+                                        {% endif %}
                                     </td>
                                     <td class="text-center"><a href="{% url 'detalleCheque' cheques.id %}"><i
                                                 class="fas fa-eye"></i></a>
@@ -98,8 +97,7 @@
             
 
         <!--        tarjetas        -->
-        <div class="col-2">
-            </br></br></br></br>
+        <div class="col-lg-2 order-1 order-lg-2 align-items-start">
             <div class="card text-white bg-danger mb-3">
                 <div class="card-header text-center"><b>TOTAL NO PAGADO</b></div>
                 <div class="card-body">
