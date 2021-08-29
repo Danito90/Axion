@@ -19,6 +19,7 @@
                             <thead>
                                 <tr class="text-center">
                                     <th scope="col" style="vertical-align: middle;">Id</th>
+                                    <th scope="col" style="vertical-align: middle;">Empresa</th>
                                     <th scope="col" style="vertical-align: middle;">Proveedor</th>
                                     <th scope="col" style="vertical-align: middle;">Banco</th>
                                     <th scope="col" style="vertical-align: middle;">N° de Cheque</th>
@@ -46,12 +47,14 @@
                                     <th>Filter..</th>
                                     <th>Filter..</th>
                                     <th>Filter..</th>
+                                    <th>Filter..</th>
                                 </tr>
                             </tfoot>
                             <tbody id="myTable">
                                 <tr>
                                     {% for cheques in cheques_all %}
                                     <th scope="row" class="text-center">{{cheques.id}}</th>
+                                    <td class="text-center">{{cheques.empresa}}</td>
                                     <td class="text-center"> <a
                                             href="cuenta_prov/{{cheques.proveedor_id}}">{{cheques.proveedor}}</a></td>
                                     <td class="text-center"> {{cheques.banco}}</td>

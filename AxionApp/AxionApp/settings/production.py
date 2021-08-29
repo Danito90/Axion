@@ -20,10 +20,10 @@ ALLOWED_HOSTS = ['gestionch.herokuapp.com']
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'd5gjaft3f0lrhd',
-        'USER': 'rikhgidwmzfrwi',
-        'PASSWORD': 'eac5830bc798f2cd6934c0dc7c13d9311deefcd1ab2071ab73ac0e960f9d4ade',
-        'HOST': 'ec2-54-236-234-167.compute-1.amazonaws.com',
+        'NAME': 'd4d9o1pq2nu1aa',
+        'USER': 'vwksauwkbquiua',
+        'PASSWORD': '8994df6a2f7f5e1a5603c2d1c6f5da7295c1529cf8ddfbfe221e81bd888ca163',
+        'HOST': 'ec2-52-23-190-126.compute-1.amazonaws.com',
         'PORT': '5432',
     }
 }

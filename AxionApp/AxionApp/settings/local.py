@@ -19,7 +19,7 @@ ALLOWED_HOSTS = []
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'AxionApp',
+        'NAME': 'AxionApp2',
         'USER': 'postgres',
         'PASSWORD': 'jajaja',
         'HOST': 'localhost',

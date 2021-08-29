@@ -1,9 +1,9 @@
 from django.contrib import admin
 from chPropios.models import chPropio
+from import_export.admin import ImportExportModelAdmin
 
-
-class chPropioAdmin(admin.ModelAdmin):
-    list_display = ('id', 'proveedor', 'banco', 'numCh', 'fechaVto', 'monto')  # modo tabla en admin
+class chPropioAdmin(ImportExportModelAdmin):
+    list_display = ('id', 'empresa','proveedor', 'banco', 'numCh', 'fechaVto', 'monto')  # modo tabla en admin
     search_fields = ('banco', 'numCh', 'monto')  # barra de busqueda
     list_filter = ('fechaVto', 'proveedor')  # filtros a la derecha
     raw_id_fields = ('proveedor',) # buscador de clave foraneas

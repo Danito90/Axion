@@ -1,13 +1,14 @@
 from datetime import datetime
-
 from django.db import models
 
 # Create your models here.
 from chPropios.choices import BANCOS
 from proveedor.models import Proveedor
+from Empresa.models import Empresa
 
 
 class chPropio(models.Model):
+    empresa = models.ForeignKey(Empresa, on_delete=models.SET_NULL, null=True)
     proveedor = models.ForeignKey(Proveedor, on_delete=models.SET_NULL, null=True)
     banco = models.CharField(max_length=50, choices=BANCOS)
     numCh = models.CharField(max_length=8,)
