@@ -12,9 +12,8 @@
     <div class="row">
         <div class="col-lg-10 pt-5 pt-lg-0 order-2 order-lg-1">
             <div class="card text-black bg-muted mb-3">
-                <div class="card-header text-center"> <b style="color: blue;font-size: xx-large"> {{ proveedor.id }}-
-                        &nbsp</b>
-                    <b style="color: blue;font-size: xx-large"> {{ proveedor.nombre }}</b>
+                <div class="card-header text-center"> <b style="color: blue;font-size: xx-large"> {{ id }}-
+                        &nbsp</b><b style="color: blue;font-size: xx-large"> {{ nombre }}</b>
                 </div>
                 <div class="card-body">
                     <div class="table-responsive" id="mydatatable-container">
@@ -22,6 +21,7 @@
                             <thead>
                                 <tr class="text-center">
                                     <th scope="col" style="vertical-align: middle;">Id</th>
+                                    <th scope="col" style="vertical-align: middle;">Empresa</th>
                                     <th scope="col" style="vertical-align: middle;">Proveedor</th>
                                     <th scope="col" style="vertical-align: middle;">Banco</th>
                                     <th scope="col" style="vertical-align: middle;">N° de Cheque</th>
@@ -37,6 +37,7 @@
                             </thead>
                             <tfoot>
                                 <tr>
+                                    <th>Filter..</th>
                                     <th>Filter..</th>
                                     <th>Filter..</th>
                                     <th>Filter..</th>
