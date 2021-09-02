@@ -39,7 +39,7 @@
 
     <div class="row">
         <!-- <a href="/">Regresar a inicio</a> para mejor practica como abajo-->
-        <a href="{% url 'index' %}" class="btn btn-danger"><b> REGRESAR AL INICIO</b></a>
+        <a href="{{ request.META.HTTP_REFERER }}" class="btn btn-danger"><b> REGRESAR </b></a>
     </div>
 </div>
 

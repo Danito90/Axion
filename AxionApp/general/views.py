@@ -12,7 +12,7 @@ from datetime import datetime, date
 # @login_required #esto es para que solo se pueda acceder con el login... pero podemos hacerlo desde las urls directamente
 def bienvenido(request):
     no_cheques = chPropio.objects.filter(pagado=False).count()  # cuenta cheques pagados
-    cheques = chPropio.objects.all().filter(empresa__user__id=request.user.id).order_by('monto', 'fechaVto')
+    cheques = chPropio.objects.all().filter(empresa__user__id=request.user.id).order_by('pagado','fechaVto','monto')
     # .filter(empresa__user__id=request.user.id) filtro por empresa-usuario-usuario logeado
     #.filter(empresa__user__id=1) filtra por usuario id 1
     #filtra empresa 1 -2  ... .filter(empresa__in=[1, 2,])

@@ -28,7 +28,7 @@
                 <div class="container overflow-hidden">
                     <div class="row gx-5">
                         <div class="col">
-                            <a href="{% url 'index' %}" class="btn btn-danger" style="width:150px"><b> REGRESAR </b></a>
+                            <a href="{{ request.META.HTTP_REFERER }}" class="btn btn-danger" style="width:150px"><b> REGRESAR </b></a>
                         </div>
                         <div class="col">
                             <button type="submit" class="btn btn-dark" style="width:150px;"><b> AGREGAR </b></button>
