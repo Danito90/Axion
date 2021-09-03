@@ -8,9 +8,9 @@ from Empresa.models import Empresa
 
 
 class chPropio(models.Model):
-    empresa = models.ForeignKey(Empresa, on_delete=models.SET_NULL, null=True)
+    empresa = models.ForeignKey(Empresa, on_delete=models.SET_NULL, null=True,)
     proveedor = models.ForeignKey(Proveedor, on_delete=models.SET_NULL, null=True)
-    banco = models.CharField(max_length=50, choices=BANCOS)
+    banco = models.CharField(max_length=50, choices=BANCOS, default='HSBC')
     numCh = models.CharField(max_length=8,)
     fechaCarga = models.DateField(default=datetime.now) # (auto_now_add=True) para que no se muestre el campo
     fechaVto = models.DateField(auto_now=False)

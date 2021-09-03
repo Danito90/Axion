@@ -54,8 +54,8 @@
                                 <tr>
                                     {% for cheques in cheques_all %}
                                     <th scope="row" class="text-center">{{cheques.id}}</th>
-                                    <td class="text-center"><a href="cuenta_prov/1/{{cheques.empresa_id}}">{{cheques.empresa}}</td>
-                                    <td class="text-center"> <a href="cuenta_prov/0/{{cheques.proveedor_id}}">{{cheques.proveedor}}</a></td>
+                                    <td class="text-center"><a href="cuenta/1/{{cheques.empresa_id}}">{{cheques.empresa}}</td>
+                                    <td class="text-center"> <a href="cuenta/0/{{cheques.proveedor_id}}">{{cheques.proveedor}}</a></td>
                                     <td class="text-center"> {{cheques.banco}}</td>
                                     <td class="text-center"> {{cheques.numCh}}</td>
                                     <td class="text-center">{{cheques.fechaCarga|date:"d/m/Y"}}</td>
