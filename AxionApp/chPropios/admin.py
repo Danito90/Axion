@@ -10,6 +10,7 @@ class chPropioAdmin(ImportExportModelAdmin):
     ordering = ('fechaVto',) # orden descendiente , para orden ascendiente: '-fechaVto'
     # fields = ('fechaVto', 'monto', 'proveedor', 'banco', 'numCh') # orden en que aparecen los campos en el formulario de carga
     # readonly_fields=('fechaCarga','otro') # para decir que son solo campos de solo lectura
+    
 
 # Register your models here.
 admin.site.register(chPropio, chPropioAdmin)
